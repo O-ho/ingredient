@@ -1,26 +1,199 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-pretendard: 'Pretendard', sans-serif;
+  --font-roboto: var(--font-roboto-condensed, var(--font-pretendard),
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-pretendard), sans-serif;
   }
 }
 
+@theme {
+  /* ============================================
+     GERNIVERSE COLOR PALETTE - DARK MODE
+     ============================================ */
+
+  /* --- Background Colors --- */
+  --color-background-deep-black: #0A0B10;
+  --color-background-surface-dark: #161B22;
+  --color-background-surface-light: #1F242C;
+
+  /* --- Border Colors --- */
+  --color-border-main: #30363D;
+  --color-border-bright: #484F58;
+
+  /* --- Brand Accent Colors --- */
+  --color-brand-neon-cyan: #00F5FF;
+  --color-brand-neon-purple: #7B61FF;
+  --color-accent-gradient: linear-gradient(90deg, #00F5FF, #7B61FF);
+
+  /* --- Text Colors --- */
+  --color-text-primary: #F0F6FC;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #484F58;
+  --color-text-placeholder: #999ba9;
+
+  /* --- Status Colors --- */
+  --color-status-success: #2ECC71;
+  --color-status-warning: #F1C40F;
+  --color-status-danger: #E74C3C;
+  --color-status-info: #3498DB;
+
+  /* --- Interactive States --- */
+  --color-interactive-hover: #21262D;
+  --color-interactive-active: #262B33;
+  --color-interactive-focus: #00E5F5;
+  --color-interactive-disabled: #5A5F68;
+  --color-interactive-hover-border: #00D4E6;
+
+  /* --- Link Colors --- */
+  --color-link-default: #00F5FF;
+  --color-link-hover: #00D4E6;
+  --color-link-visited: #7B61FF;
+
+  /* --- Overlay & Backdrop --- */
+  --color-overlay-backdrop: rgba(10, 11, 16, 0.8);
+  --color-overlay-light: rgba(22, 27, 34, 0.95);
+
+  /* --- Additional Brand Colors --- */
+  --color-brand-cyan-dark: #00D4E6;
+  --color-brand-purple-light: #8B7AFF;
+  --color-brand-gradient-mid: #3D8BFF;
+
+  /* --- Shadow Effects --- */
+  --shadow-neon-glow: 0 0 10px rgba(0, 245, 255, 0.3);
+  --shadow-danger-glow: 0 0 10px rgba(231, 76, 60, 0.2);
+  --shadow-purple-glow: 0 0 10px rgba(123, 97, 255, 0.3);
+  --shadow-success-glow: 0 0 10px rgba(46, 204, 113, 0.2);
+  --shadow-overlay: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+  /* --- Legacy Aliases (for backward compatibility) --- */
+  --color-deep-black: var(--color-background-deep-black);
+  --color-surface-dark: var(--color-background-surface-dark);
+  --color-surface-light: var(--color-background-surface-light);
+  --color-neon-cyan: var(--color-brand-neon-cyan);
+  --color-neon-purple: var(--color-brand-neon-purple);
+}
+
+[data-theme="light"] {
+  /* ============================================
+     GERNIVERSE COLOR PALETTE - LIGHT MODE
+     ============================================ */
+
+  /* --- Background Colors --- */
+  --color-background-deep-black: #FFFFFF;
+  --color-background-surface-dark: #F8F9FA;
+  --color-background-surface-light: #F1F3F5;
+
+  /* --- Border Colors --- */
+  --color-border-main: #D1D5DB;
+  --color-border-bright: #9CA3AF;
+
+  /* --- Brand Accent Colors --- */
+  --color-brand-neon-cyan: #00D4E6;
+  --color-brand-neon-purple: #6B5CE6;
+  --color-accent-gradient: linear-gradient(90deg, #00D4E6, #6B5CE6);
+
+  /* --- Text Colors --- */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+  --color-text-placeholder: #9CA3AF;
+
+  /* --- Status Colors --- */
+  --color-status-success: #10B981;
+  --color-status-warning: #F59E0B;
+  --color-status-danger: #EF4444;
+  --color-status-info: #3B82F6;
+
+  /* --- Interactive States --- */
+  --color-interactive-hover: #F3F4F6;
+  --color-interactive-active: #E5E7EB;
+  --color-interactive-focus: #00D4E6;
+  --color-interactive-disabled: #D1D5DB;
+  --color-interactive-hover-border: #00B8CC;
+
+  /* --- Link Colors --- */
+  --color-link-default: #00D4E6;
+  --color-link-hover: #00B8CC;
+  --color-link-visited: #6B5CE6;
+
+  /* --- Overlay & Backdrop --- */
+  --color-overlay-backdrop: rgba(255, 255, 255, 0.8);
+  --color-overlay-light: rgba(248, 249, 250, 0.95);
+
+  /* --- Additional Brand Colors --- */
+  --color-brand-cyan-dark: #00B8CC;
+  --color-brand-purple-light: #8B7AFF;
+  --color-brand-gradient-mid: #3B82F6;
+
+  /* --- Shadow Effects --- */
+  --shadow-neon-glow: 0 0 10px rgba(0, 212, 230, 0.2);
+  --shadow-danger-glow: 0 0 10px rgba(239, 68, 68, 0.2);
+  --shadow-purple-glow: 0 0 10px rgba(107, 92, 230, 0.2);
+  --shadow-success-glow: 0 0 10px rgba(16, 185, 129, 0.2);
+  --shadow-overlay: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+.ipo {
+  font-family: var(--font-roboto-condensed), sans-serif;
+}
+
+.icHover {
+  border-radius: 12px;
+  padding: 4px;
+  &:hover {
+    background:rgba(0,0,0,.05);
+  }
+}
+
+.marquee {
+  display: inline-flex;
+  animation: marquee 25s linear infinite;
+}
+
+.infinite-scroll {
+  animation: infiniteScroll 20s linear infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-pretendard), sans-serif;
+}
+button {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+input {
+  &::placeholder {
+    color: var(--color-text-placeholder);
+  }
 }
