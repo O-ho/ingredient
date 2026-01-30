@@ -4,7 +4,7 @@ import { useDashboardStats } from "@/hooks/use-dashboard-stats";
 import {
   PieChart,
   Pie,
-  Cell,
+  Sector,
   ResponsiveContainer,
   Legend,
   Tooltip,
@@ -12,6 +12,7 @@ import {
 import type {
   TooltipContentProps,
   PieLabelRenderProps,
+  PieSectorShapeProps,
 } from "recharts";
 import type {
   ValueType,
@@ -165,6 +166,14 @@ export default function DashboardPage() {
     return `${(percent * 100).toFixed(1)}%`;
   };
 
+  // Cell 대체: shape prop으로 섹터별 fill 적용 (Recharts 4.0 대비)
+  const renderPieShape = (props: PieSectorShapeProps) => (
+    <Sector
+      {...props}
+      fill={props.fill ?? (props as { color?: string }).color ?? "#808080"}
+    />
+  );
+
   return (
     <div className="min-h-screen p-8 bg-bg-base">
       <div className="max-w-[1600px] mx-auto">
@@ -198,11 +207,8 @@ export default function DashboardPage() {
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
-                  >
-                    {memberData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
+                    shape={renderPieShape}
+                  />
                   <Tooltip
                     content={(props) => (
                       <ChartTooltip
@@ -263,16 +269,15 @@ export default function DashboardPage() {
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
-                  >
-                    {investmentData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
+                    shape={renderPieShape}
+                  />
                   <Tooltip
                     content={(props) => (
                       <ChartTooltip
                         {...props}
-                        formatter={(v) => formatCurrency(typeof v === "number" ? v : 0)}
+                        formatter={(v) =>
+                          formatCurrency(typeof v === "number" ? v : 0)
+                        }
                         labelSuffix="원"
                       />
                     )}
@@ -329,11 +334,8 @@ export default function DashboardPage() {
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
-                  >
-                    {accountData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
+                    shape={renderPieShape}
+                  />
                   <Tooltip
                     content={(props) => (
                       <ChartTooltip
