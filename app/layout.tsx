@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { QueryProvider } from "@/components/providers/query-provider";
+import { MSWProvider } from "@/components/providers/msw-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Header } from "@/components/layout/header";
+import { SidePanel } from "@/components/layout/side-panel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +32,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <MSWProvider>
+            <QueryProvider>
+              <div className="flex min-h-screen">
+                <SidePanel />
+                <div className="flex flex-1 flex-col min-w-0">
+                  <Header />
+                  <main className="flex-1">{children}</main>
+                </div>
+              </div>
+            </QueryProvider>
+          </MSWProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

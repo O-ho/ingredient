@@ -20,65 +20,56 @@
      ============================================ */
 
   /* --- Background Colors --- */
-  --color-background-deep-black: #0A0B10;
-  --color-background-surface-dark: #161B22;
-  --color-background-surface-light: #1F242C;
+  --color-bg-base: #0A0B10;
+  --color-bg-surface: #161B22;
+  --color-bg-elevated: #1F242C;
 
   /* --- Border Colors --- */
-  --color-border-main: #30363D;
-  --color-border-bright: #484F58;
+  --color-border: #30363D;
+  --color-border-strong: #484F58;
 
-  /* --- Brand Accent Colors --- */
-  --color-brand-neon-cyan: #00F5FF;
-  --color-brand-neon-purple: #7B61FF;
-  --color-accent-gradient: linear-gradient(90deg, #00F5FF, #7B61FF);
+  /* --- Brand Colors --- */
+  --color-primary: #00F5FF;
+  --color-secondary: #7B61FF;
+  --color-primary-dark: #00D4E6;
+  --color-secondary-light: #8B7AFF;
 
   /* --- Text Colors --- */
-  --color-text-primary: #F0F6FC;
-  --color-text-secondary: #8B949E;
-  --color-text-muted: #484F58;
+  --color-text: #F0F6FC;
+  --color-text-muted: #8B949E;
+  --color-text-subtle: #484F58;
   --color-text-placeholder: #999ba9;
 
   /* --- Status Colors --- */
-  --color-status-success: #2ECC71;
-  --color-status-warning: #F1C40F;
-  --color-status-danger: #E74C3C;
-  --color-status-info: #3498DB;
+  --color-success: #2ECC71;
+  --color-warning: #F1C40F;
+  --color-danger: #E74C3C;
+  --color-info: #3498DB;
 
   /* --- Interactive States --- */
-  --color-interactive-hover: #21262D;
-  --color-interactive-active: #262B33;
-  --color-interactive-focus: #00E5F5;
-  --color-interactive-disabled: #5A5F68;
-  --color-interactive-hover-border: #00D4E6;
-
-  /* --- Link Colors --- */
-  --color-link-default: #00F5FF;
-  --color-link-hover: #00D4E6;
-  --color-link-visited: #7B61FF;
-
-  /* --- Overlay & Backdrop --- */
-  --color-overlay-backdrop: rgba(10, 11, 16, 0.8);
-  --color-overlay-light: rgba(22, 27, 34, 0.95);
-
-  /* --- Additional Brand Colors --- */
-  --color-brand-cyan-dark: #00D4E6;
-  --color-brand-purple-light: #8B7AFF;
-  --color-brand-gradient-mid: #3D8BFF;
-
-  /* --- Shadow Effects --- */
-  --shadow-neon-glow: 0 0 10px rgba(0, 245, 255, 0.3);
-  --shadow-danger-glow: 0 0 10px rgba(231, 76, 60, 0.2);
-  --shadow-purple-glow: 0 0 10px rgba(123, 97, 255, 0.3);
-  --shadow-success-glow: 0 0 10px rgba(46, 204, 113, 0.2);
-  --shadow-overlay: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --color-hover: #21262D;
+  --color-active: #262B33;
+  --color-focus: #00E5F5;
+  --color-disabled: #5A5F68;
 
   /* --- Legacy Aliases (for backward compatibility) --- */
-  --color-deep-black: var(--color-background-deep-black);
-  --color-surface-dark: var(--color-background-surface-dark);
-  --color-surface-light: var(--color-background-surface-light);
-  --color-neon-cyan: var(--color-brand-neon-cyan);
-  --color-neon-purple: var(--color-brand-neon-purple);
+  --color-background-deep-black: var(--color-bg-base);
+  --color-background-surface-dark: var(--color-bg-surface);
+  --color-background-surface-light: var(--color-bg-elevated);
+  --color-border-main: var(--color-border);
+  --color-border-bright: var(--color-border-strong);
+  --color-brand-neon-cyan: var(--color-primary);
+  --color-brand-neon-purple: var(--color-secondary);
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-text-muted);
+  --color-status-success: var(--color-success);
+  --color-status-warning: var(--color-warning);
+  --color-status-danger: var(--color-danger);
+  --color-status-info: var(--color-info);
+  --color-interactive-hover: var(--color-hover);
+  --color-interactive-active: var(--color-active);
+  --color-interactive-focus: var(--color-focus);
+  --color-interactive-disabled: var(--color-disabled);
 }
 
 [data-theme="light"] {
@@ -87,58 +78,56 @@
      ============================================ */
 
   /* --- Background Colors --- */
-  --color-background-deep-black: #FFFFFF;
-  --color-background-surface-dark: #F8F9FA;
-  --color-background-surface-light: #F1F3F5;
+  --color-bg-base: #FFFFFF;
+  --color-bg-surface: #F8F9FA;
+  --color-bg-elevated: #F1F3F5;
 
   /* --- Border Colors --- */
-  --color-border-main: #D1D5DB;
-  --color-border-bright: #9CA3AF;
+  --color-border: #D1D5DB;
+  --color-border-strong: #9CA3AF;
 
-  /* --- Brand Accent Colors --- */
-  --color-brand-neon-cyan: #00D4E6;
-  --color-brand-neon-purple: #6B5CE6;
-  --color-accent-gradient: linear-gradient(90deg, #00D4E6, #6B5CE6);
+  /* --- Brand Colors --- */
+  --color-primary: #00D4E6;
+  --color-secondary: #6B5CE6;
+  --color-primary-dark: #00B8CC;
+  --color-secondary-light: #8B7AFF;
 
   /* --- Text Colors --- */
-  --color-text-primary: #111827;
-  --color-text-secondary: #6B7280;
-  --color-text-muted: #9CA3AF;
+  --color-text: #111827;
+  --color-text-muted: #6B7280;
+  --color-text-subtle: #9CA3AF;
   --color-text-placeholder: #9CA3AF;
 
   /* --- Status Colors --- */
-  --color-status-success: #10B981;
-  --color-status-warning: #F59E0B;
-  --color-status-danger: #EF4444;
-  --color-status-info: #3B82F6;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
 
   /* --- Interactive States --- */
-  --color-interactive-hover: #F3F4F6;
-  --color-interactive-active: #E5E7EB;
-  --color-interactive-focus: #00D4E6;
-  --color-interactive-disabled: #D1D5DB;
-  --color-interactive-hover-border: #00B8CC;
+  --color-hover: #F3F4F6;
+  --color-active: #E5E7EB;
+  --color-focus: #00D4E6;
+  --color-disabled: #D1D5DB;
 
-  /* --- Link Colors --- */
-  --color-link-default: #00D4E6;
-  --color-link-hover: #00B8CC;
-  --color-link-visited: #6B5CE6;
-
-  /* --- Overlay & Backdrop --- */
-  --color-overlay-backdrop: rgba(255, 255, 255, 0.8);
-  --color-overlay-light: rgba(248, 249, 250, 0.95);
-
-  /* --- Additional Brand Colors --- */
-  --color-brand-cyan-dark: #00B8CC;
-  --color-brand-purple-light: #8B7AFF;
-  --color-brand-gradient-mid: #3B82F6;
-
-  /* --- Shadow Effects --- */
-  --shadow-neon-glow: 0 0 10px rgba(0, 212, 230, 0.2);
-  --shadow-danger-glow: 0 0 10px rgba(239, 68, 68, 0.2);
-  --shadow-purple-glow: 0 0 10px rgba(107, 92, 230, 0.2);
-  --shadow-success-glow: 0 0 10px rgba(16, 185, 129, 0.2);
-  --shadow-overlay: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* --- Legacy Aliases --- */
+  --color-background-deep-black: var(--color-bg-base);
+  --color-background-surface-dark: var(--color-bg-surface);
+  --color-background-surface-light: var(--color-bg-elevated);
+  --color-border-main: var(--color-border);
+  --color-border-bright: var(--color-border-strong);
+  --color-brand-neon-cyan: var(--color-primary);
+  --color-brand-neon-purple: var(--color-secondary);
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-text-muted);
+  --color-status-success: var(--color-success);
+  --color-status-warning: var(--color-warning);
+  --color-status-danger: var(--color-danger);
+  --color-status-info: var(--color-info);
+  --color-interactive-hover: var(--color-hover);
+  --color-interactive-active: var(--color-active);
+  --color-interactive-focus: var(--color-focus);
+  --color-interactive-disabled: var(--color-disabled);
 }
 
 @keyframes marquee {
@@ -177,6 +166,11 @@
 
 .infinite-scroll {
   animation: infiniteScroll 20s linear infinite;
+}
+
+/* Pie 차트 내 텍스트(퍼센트 라벨, 툴팁 등) — 다크/라이트에 맞춰 대비 색 적용 */
+.dashboard-pie-chart text {
+  fill: var(--color-text);
 }
 
 @media (prefers-color-scheme: dark) {
