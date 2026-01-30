@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTheme } from "@/components/providers/theme-provider";
 
 interface ColorItem {
   name: string;
@@ -370,19 +371,10 @@ const lightModePalette: ColorItem[] = [
 ];
 
 const PalettePage = () => {
-  const [mode, setMode] = useState<"dark" | "light">("dark");
+  const { theme } = useTheme();
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
 
-  const currentPalette = mode === "dark" ? darkModePalette : lightModePalette;
-  const bgColor = mode === "dark" ? "#0A0B10" : "#FFFFFF";
-  const textPrimary = mode === "dark" ? "#F0F6FC" : "#111827";
-  const textSecondary = mode === "dark" ? "#8B949E" : "#6B7280";
-  const textMuted = mode === "dark" ? "#6B7280" : "#4B5563"; // 더 진한 색상으로 변경하여 가독성 향상
-  const borderColor = mode === "dark" ? "#30363D" : "#D1D5DB";
-  const borderHover = mode === "dark" ? "#484F58" : "#9CA3AF";
-  const cardBg = mode === "dark" ? "#161B22" : "#F8F9FA";
-  const glowColor = mode === "dark" ? "#00F5FF" : "#00D4E6";
-  const successColor = mode === "dark" ? "#2ECC71" : "#10B981";
+  const currentPalette = theme === "dark" ? darkModePalette : lightModePalette;
 
   const copyToClipboard = async (value: string, name: string) => {
     try {
@@ -398,23 +390,16 @@ const PalettePage = () => {
     new Set(currentPalette.map((color) => color.category)),
   );
 
-  React.useEffect(() => {
-    document.documentElement.setAttribute("data-theme", mode);
-  }, [mode]);
-
   return (
-    <div className="min-h-screen p-8" style={{ backgroundColor: bgColor }}>
+    <div className="min-h-screen p-8 bg-bg-base">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1
-              className="text-4xl font-bold mb-2"
-              style={{ color: textPrimary }}
-            >
+            <h1 className="text-4xl font-bold mb-2 text-text">
               Color Palette
             </h1>
-            <p style={{ color: textSecondary }}>
-              색상을 클릭하면 해시값이 클립보드에 복사됩니다.
+            <p className="text-text-muted">
+              색상을 클릭하면 해시값이 클립보드에 복사됩니다. (현재: {theme} 모드)
             </p>
           </div>
         </div>
@@ -427,65 +412,36 @@ const PalettePage = () => {
 
             return (
               <div key={category}>
-                <h2
-                  className="text-2xl font-semibold mb-4 pb-2"
-                  style={{
-                    color: textPrimary,
-                    borderBottom: `1px solid ${borderColor}`,
-                  }}
-                >
+                <h2 className="text-2xl font-semibold mb-4 pb-2 text-text border-b border-border">
                   {category}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {categoryColors.map((color) => (
                     <div
                       key={color.name}
-                      className="group cursor-pointer rounded-lg overflow-hidden transition-all hover:shadow-lg"
-                      style={{
-                        border: `1px solid ${borderColor}`,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = borderHover;
-                        e.currentTarget.style.boxShadow = `0 0 20px ${glowColor}33`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = borderColor;
-                        e.currentTarget.style.boxShadow = "none";
-                      }}
+                      className="group cursor-pointer rounded-lg overflow-hidden transition-all hover:shadow-lg border border-border hover:border-border-strong hover:shadow-primary/20"
                       onClick={() => copyToClipboard(color.value, color.name)}
                     >
                       <div
                         className="h-24 w-full"
                         style={{ backgroundColor: color.value }}
                       />
-                      <div className="p-4" style={{ backgroundColor: cardBg }}>
+                      <div className="p-4 bg-bg-surface">
                         <div className="flex items-center justify-between mb-2">
-                          <h3
-                            className="font-semibold text-sm"
-                            style={{ color: textPrimary }}
-                          >
+                          <h3 className="font-semibold text-sm text-text">
                             {color.name}
                           </h3>
                           {copiedColor === color.name && (
-                            <span
-                              className="text-xs font-medium"
-                              style={{ color: successColor }}
-                            >
+                            <span className="text-xs font-medium text-success">
                               복사됨!
                             </span>
                           )}
                         </div>
-                        <p
-                          className="text-xs mb-2 font-mono"
-                          style={{ color: textSecondary }}
-                        >
+                        <p className="text-xs mb-2 font-mono text-text-muted">
                           {color.value}
                         </p>
                         {color.description && (
-                          <p
-                            className="text-xs"
-                            style={{ color: textSecondary }}
-                          >
+                          <p className="text-xs text-text-muted">
                             {color.description}
                           </p>
                         )}
