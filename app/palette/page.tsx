@@ -377,7 +377,7 @@ const PalettePage = () => {
   const bgColor = mode === "dark" ? "#0A0B10" : "#FFFFFF";
   const textPrimary = mode === "dark" ? "#F0F6FC" : "#111827";
   const textSecondary = mode === "dark" ? "#8B949E" : "#6B7280";
-  const textMuted = mode === "dark" ? "#484F58" : "#9CA3AF";
+  const textMuted = mode === "dark" ? "#6B7280" : "#4B5563"; // 더 진한 색상으로 변경하여 가독성 향상
   const borderColor = mode === "dark" ? "#30363D" : "#D1D5DB";
   const borderHover = mode === "dark" ? "#484F58" : "#9CA3AF";
   const cardBg = mode === "dark" ? "#161B22" : "#F8F9FA";
@@ -395,7 +395,7 @@ const PalettePage = () => {
   };
 
   const categories = Array.from(
-    new Set(currentPalette.map((color) => color.category))
+    new Set(currentPalette.map((color) => color.category)),
   );
 
   React.useEffect(() => {
@@ -411,76 +411,18 @@ const PalettePage = () => {
               className="text-4xl font-bold mb-2"
               style={{ color: textPrimary }}
             >
-              Gerniverse Color Palette
+              Color Palette
             </h1>
             <p style={{ color: textSecondary }}>
               색상을 클릭하면 해시값이 클립보드에 복사됩니다.
             </p>
-          </div>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setMode("dark")}
-              className="px-4 py-2 rounded-lg font-medium transition-all"
-              style={{
-                backgroundColor:
-                  mode === "dark" ? "#00F5FF" : mode === "light" ? "#F3F4F6" : "#161B22",
-                color:
-                  mode === "dark"
-                    ? "#0A0B10"
-                    : mode === "light"
-                    ? "#6B7280"
-                    : "#8B949E",
-              }}
-              onMouseEnter={(e) => {
-                if (mode !== "dark") {
-                  e.currentTarget.style.backgroundColor =
-                    mode === "light" ? "#E5E7EB" : "#21262D";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (mode !== "dark") {
-                  e.currentTarget.style.backgroundColor =
-                    mode === "light" ? "#F3F4F6" : "#161B22";
-                }
-              }}
-            >
-              Dark Mode
-            </button>
-            <button
-              onClick={() => setMode("light")}
-              className="px-4 py-2 rounded-lg font-medium transition-all"
-              style={{
-                backgroundColor:
-                  mode === "light" ? "#00D4E6" : mode === "dark" ? "#161B22" : "#F3F4F6",
-                color:
-                  mode === "light"
-                    ? "#111827"
-                    : mode === "dark"
-                    ? "#8B949E"
-                    : "#6B7280",
-              }}
-              onMouseEnter={(e) => {
-                if (mode !== "light") {
-                  e.currentTarget.style.backgroundColor =
-                    mode === "dark" ? "#21262D" : "#E5E7EB";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (mode !== "light") {
-                  e.currentTarget.style.backgroundColor =
-                    mode === "dark" ? "#161B22" : "#F3F4F6";
-                }
-              }}
-            >
-              Light Mode
-            </button>
           </div>
         </div>
 
         <div className="space-y-12">
           {categories.map((category) => {
             const categoryColors = currentPalette.filter(
-              (color) => color.category === category
+              (color) => color.category === category,
             );
 
             return (
@@ -540,7 +482,10 @@ const PalettePage = () => {
                           {color.value}
                         </p>
                         {color.description && (
-                          <p className="text-xs" style={{ color: textMuted }}>
+                          <p
+                            className="text-xs"
+                            style={{ color: textSecondary }}
+                          >
                             {color.description}
                           </p>
                         )}
